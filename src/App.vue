@@ -28,6 +28,9 @@
     <v-toolbar app fixed clipped-left>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>Application</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <span class="outline" v-if="userName" outline>{{userName}}</span>
+      <h1></h1>
     </v-toolbar>
     <v-content>
       <v-container fluid fill-height>
@@ -59,7 +62,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="primary" v-on:click="setUserName">確定</v-btn>
+            <v-btn color="light-blue" v-on:click="setUserName">確定</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -88,5 +91,10 @@
   }
 </script>
 
-<style scoped>
+<style>
+.outline {
+  border: 1px solid white;
+  padding: 8px 16px;
+  border-radius: 2px;
+}
 </style>
