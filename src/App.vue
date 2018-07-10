@@ -1,11 +1,13 @@
 <template>
   <v-app id="inspire" dark>
+    <!-- 抽屜 -->
     <v-navigation-drawer
       v-model="drawer"
       clipped
       fixed
       app>
       <v-list>
+        <!-- 房間列表 -->
         <template v-for="room in roomList">
           <v-list-tile :key="room.text" @click="() => route(room)" avatar>
             <!-- 有頭貼 -->
@@ -25,6 +27,7 @@
         </template>
       </v-list>
     </v-navigation-drawer>
+    <!-- 導航欄 -->
     <v-toolbar app fixed clipped-left>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>Application</v-toolbar-title>
