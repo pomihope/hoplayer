@@ -5,23 +5,24 @@
       clipped
       fixed
       app>
-      <v-list dense>
-        <v-list-tile @click="">
-          <v-list-tile-action>
-            <v-icon>dashboard</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>音樂室列表</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile @click="">
-          <v-list-tile-action>
-            <v-icon>settings</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>設定</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+      <v-list>
+        <template v-for="room in roomList">
+          <v-list-tile :key="room.text" @click="() => route(room)" avatar>
+            <!-- 有頭貼 -->
+            <v-list-tile-avatar v-show="room.image">
+              <img :src="room.image" alt="avatar">
+            </v-list-tile-avatar>
+            <!-- 無頭貼 -->
+            <v-list-tile-avatar color="teal" v-show="!room.image">
+              <span class="white--text avatar-text">{{(room.name || '')[0]}}</span>
+            </v-list-tile-avatar>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                {{ room.name }}
+              </v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </template>
       </v-list>
     </v-navigation-drawer>
     <v-toolbar app fixed clipped-left>
@@ -71,6 +72,7 @@
     data: () => ({
       drawer: true,
       dialog: true,
+      roomList: [{image: '', name: '資工系重返榮耀'}],
       userName: undefined
     }),
     methods: {
