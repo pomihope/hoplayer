@@ -39,14 +39,38 @@
     <v-footer app fixed>
       <span class="mx-auto">重返榮耀</span>
     </v-footer>
+    <v-layout row justify-center>
+      <v-dialog v-model="dialog" persistent max-width="290">
+        <v-card class="elevation-12">
+          <v-toolbar dark color="primary">
+            <v-toolbar-title>設定暱稱</v-toolbar-title>
+          </v-toolbar>
+          <v-card-text>
+            <v-text-field v-model="userName" prepend-icon="person" name="userName" label="暱稱" type="text"></v-text-field>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="primary" v-on:click="setUserName">確定</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-layout>
   </v-app>
 </template>
 
 <script>
   export default {
     data: () => ({
-      drawer: true
+      drawer: true,
+      dialog: true,
+      userName: undefined
     }),
+    methods: {
+      setUserName: function (userName) {
+        this.userName = userName
+        this.dialog = false
+      }
+    },
     props: {
       source: String
     }
