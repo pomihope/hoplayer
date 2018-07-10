@@ -52,12 +52,13 @@
               name="userName"
               label="暱稱"
               type="text"
-              v-on:keyup.enter="dialog=!dialog">
+              autofocus="true"
+              v-on:keyup.enter="dialog=false">
             </v-text-field>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="primary" v-on:click="dialog=!dialog">確定</v-btn>
+            <v-btn color="primary" v-on:click="dialog=false">確定</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
