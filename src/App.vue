@@ -46,7 +46,7 @@
     <v-layout row justify-center>
       <v-dialog v-model="dialog" persistent max-width="290">
         <v-card class="elevation-12">
-          <v-toolbar dark color="primary">
+          <v-toolbar dark color="light-blue">
             <v-toolbar-title>設定暱稱</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
@@ -56,7 +56,8 @@
               name="userName"
               label="暱稱"
               type="text"
-              autofocus="true"
+              color="light-blue"
+              autofocus
               v-on:keyup.enter="setUserName">
             </v-text-field>
           </v-card-text>
