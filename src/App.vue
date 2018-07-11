@@ -35,42 +35,44 @@
       <span class="outline" v-if="userName" outline>{{userName}}</span>
       <h1></h1>
     </v-toolbar>
+    <!-- 主區塊 -->
     <v-content>
       <v-container fluid fill-height>
         <v-layout justify-center align-center>
-          <v-flex shrink>
+          <v-flex>
+            <router-view></router-view>
           </v-flex>
         </v-layout>
       </v-container>
     </v-content>
+    <!-- Footer -->
     <v-footer app fixed>
       <span class="mx-auto">重返榮耀</span>
     </v-footer>
-    <v-layout row justify-center>
-      <v-dialog v-model="dialog" persistent max-width="290">
-        <v-card class="elevation-12">
-          <v-toolbar dark color="light-blue">
-            <v-toolbar-title>設定暱稱</v-toolbar-title>
-          </v-toolbar>
-          <v-card-text>
-            <v-text-field
-              v-model="userName"
-              prepend-icon="person"
-              name="userName"
-              label="暱稱"
-              type="text"
-              color="light-blue"
-              autofocus
-              v-on:keyup.enter="setUserName">
-            </v-text-field>
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="light-blue" v-on:click="setUserName">確定</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </v-layout>
+    <!-- 設定暱稱 Dialog -->
+    <v-dialog v-model="dialog" persistent max-width="290">
+      <v-card class="elevation-12">
+        <v-toolbar dark color="light-blue">
+          <v-toolbar-title>設定暱稱</v-toolbar-title>
+        </v-toolbar>
+        <v-card-text>
+          <v-text-field
+            v-model="userName"
+            prepend-icon="person"
+            name="userName"
+            label="暱稱"
+            type="text"
+            color="light-blue"
+            autofocus
+            v-on:keyup.enter="setUserName">
+          </v-text-field>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="light-blue" v-on:click="setUserName">確定</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-app>
 </template>
 
@@ -79,7 +81,7 @@
     data: () => ({
       drawer: true,
       dialog: true,
-      roomList: [{image: '', name: '資工系重返榮耀'}],
+      roomList: [{image: '', name: '資工系重返榮耀', uid: '123'}],
       userName: undefined
     }),
     methods: {
@@ -87,6 +89,9 @@
         if (this.userName) {
           this.dialog = false
         }
+      },
+      route (room) {
+        this.$router.push({name: 'room', params: { uid: room.uid, image: room.image }})
       }
     },
     props: {

@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import VueYoutube from 'vue-youtube'
 
 // Vue.use(Vuetify, { theme: {
 //   primary: '#ee44aa',
@@ -16,6 +17,7 @@ import 'vuetify/dist/vuetify.min.css'
 //   warning: '#FFC107'
 // }})
 
+Vue.use(VueYoutube)
 Vue.use(Vuetify)
 
 Vue.config.productionTip = false

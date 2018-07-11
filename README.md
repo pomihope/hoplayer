@@ -1,6 +1,6 @@
 # Hoplayer
 
-> A Vue.js project for playing youtube synchronized.
+> A Vue.js client for playing youtube synchronized.
 
 ## Build Setup
 
